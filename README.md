@@ -1,4 +1,4 @@
-# iOS_project_generater
+# iOS_project_generator
 
 Automatically build ios project quickly with CocoaPods and some useful extensions. (Swift project only)
 
