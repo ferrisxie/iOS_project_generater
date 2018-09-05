@@ -1,0 +1,110 @@
+//
+//  AppPrefix.pch
+//  AmazingBuff
+//
+//  Created by bravoxu on 09/04/2018.
+//  Copyright © 2018年 Tencent. All rights reserved.
+//
+
+
+#ifndef PLATFORM_IPHONE
+#define PLATFORM_IPHONE
+#endif
+
+#ifdef __OBJC__
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Masonry.h>
+#import "UtilsMacro.h"
+#import <BlocksKit+UIKit.h>
+#import <Block.h>
+#import "FGBaseViewController.h"
+#import "FGBaseNavigationController.h"
+#import "FGBaseButton.h"
+#import "FGBaseViewController.h"
+//#import "QBCommonPrefixHeader.pch"
+//------------------------模块接入 Begin
+//分享模块
+#ifndef QK_USE_MODULE_SHARE
+//#define QK_USE_MODULE_SHARE
+#endif
+
+//TBS模块
+#ifndef QK_USE_MODULE_TBS
+//#define QK_USE_MODULE_TBS
+#endif
+
+//帐号模块
+#ifndef QK_USE_MODULE_ACCOUNT
+#define QK_USE_MODULE_ACCOUNT
+#endif
+
+//Flutter模块
+#ifndef QK_USE_MODULE_FLUTTER
+//#define QK_USE_MODULE_FLUTTER
+#endif
+//------------------------模块接入 End.
+
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
+#define DefineWeakVarBeforeBlock(var) \
+__block __weak __typeof(var) __weak_##var = var
+
+#define DefineStrongVarInBlock(var) \
+__typeof(__weak_##var) var = __weak_##var
+
+#define DefineWeakSelfBeforeBlock() \
+__weak __typeof(self) __weak_self = self
+
+#define DefineStrongSelfInBlock(strongSelf) \
+__typeof(__weak_self) strongSelf = __weak_self
+
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
+
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
+#ifdef COMMON_LOG
+#define CommonLog_i(fmt,...) NSLog(INFO_NEW_FMT(fmt),##__VA_ARGS__,nil)
+#define CommonLog_d(fmt,...) NSLog(DEBUG_NEW_FMT(fmt),##__VA_ARGS__,nil)
+#define CommonLog_w(fmt,...) NSLog(WARNING_NEW_FMT(fmt),##__VA_ARGS__,nil)
+#define CommonLog_e(fmt,...) NSLog(ERROR_NEW_FMT(fmt),##__VA_ARGS__,nil)
+#else
+#define CommonLog_i(fmt,...)
+#define CommonLog_d(fmt,...)
+#define CommonLog_w(fmt,...)
+#define CommonLog_e(fmt,...)
+#endif
+
+#undef    AS_SINGLETON
+#define AS_SINGLETON( __class ) \
++ (__class *)sharedInstance;
+
+#undef    DEF_SINGLETON
+#define DEF_SINGLETON( __class ) \
++ (__class *)sharedInstance \
+{ \
+static dispatch_once_t once; \
+static __class * __singleton__; \
+dispatch_once( &once, ^{ __singleton__ = [[__class alloc] init]; } ); \
+return __singleton__; \
+}
+
+
+#endif
+

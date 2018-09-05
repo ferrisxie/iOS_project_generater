@@ -62,3 +62,10 @@ def pod_install(dir):
         call(['pod','install','--verbose','--no-repo-update'],cwd=dir)
     except:
         print 'fatal error: pod install failed'
+
+def generate_config(dst):
+    config = ConfigParser.RawConfigParser()
+    config.add_section('template')
+    config.set('template', 'name', 'SwiftTemplate')
+    with open(dst, 'wb') as config_file:
+        config.write(config_file)

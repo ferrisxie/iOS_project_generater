@@ -3,9 +3,9 @@ from lib.exception import  GeneratorIllegalProjectNameException
 from lib import actions
 import ConfigParser
 import os.path
-def main():
+def main(template_name):
     config = ConfigParser.RawConfigParser()
-    config.read('templates/swift/swift.cfg')
+    config.read('templates/'+template_name+'/config.cfg')
     template_project_name = config.get('template','name')
     template_organization = config.get('template','organization')
     template_organization_id = config.get('template','organization_id')
@@ -24,13 +24,13 @@ def main():
         organization_identify = template_organization_id
 
     #copy file
-    actions.copy_file('templates/swift/'+template_project_name,project_name+'/'+project_name)
-    actions.copy_file('templates/swift/'+template_project_name+'.xcodeproj/project.pbxproj',project_name+'/'+project_name+'.xcodeproj/project.pbxproj')
-    actions.copy_file('templates/files/Podfile', project_name)
+    actions.copy_file('templates/'+template_name+'/'+template_project_name,project_name+'/'+project_name)
+    actions.copy_file('templates/'+template_name+'/'+template_project_name+'.xcodeproj/project.pbxproj',project_name+'/'+project_name+'.xcodeproj/project.pbxproj')
+    actions.copy_file('templates/'+template_name+'/Podfile', project_name)
     #rename files
     actions.rename_file(project_name+'/'+template_project_name,project_name+'/'+project_name)
     #handle podfile
-    actions.replace_str_infile(project_name+'/'+'Podfile','template',project_name)
+    actions.replace_str_infile(project_name+'/'+'Podfile',template_project_name,project_name)
     #handler projectfile
     str_list = {}
     str_list[template_project_name] = project_name
@@ -38,16 +38,10 @@ def main():
     str_list[template_organization_id] = organization_identify
     actions.replace_str_infile(project_name+'/'+project_name+'.xcodeproj/project.pbxproj',str_list=str_list)
     #install pod
-    #actions.pod_install(project_name+'/')
+    actions.pod_install(project_name+'/')
 
-def generate_config(dst):
-    config = ConfigParser.RawConfigParser()
-    config.add_section('template')
-    config.set('template','name','SwiftTemplate')
-    with open(dst,'wb') as config_file:
-        config.write(config_file)
-
-# generate_config('templates/swift/swift.cfg')
+# actions.generate_config('templates/swift/swift.cfg')
 
 if __name__ == "__main__":
-    main()
+    template_name = raw_input("input template name. eg. 'oc' 'swift': ")
+    main(template_name)
