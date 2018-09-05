@@ -1,9 +1,10 @@
 iOS_project_generator
 ------
 
-Automatically build ios project quickly with CocoaPods and some useful extensions. (Swift/OC)
-
-###requirement
+Automatically build ios project quickly with CocoaPods and some useful extensions. (Swift/OC)  
+  
+  
+### requirement
 - python2.7
 - Xcode8+
 
