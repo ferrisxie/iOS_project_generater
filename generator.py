@@ -24,21 +24,23 @@ def main(template_name):
         organization_identify = template_organization_id
 
     #copy file
-    actions.copy_file('templates/'+template_name+'/'+template_project_name,project_name+'/'+project_name)
-    actions.copy_file('templates/'+template_name+'/'+template_project_name+'.xcodeproj/project.pbxproj',project_name+'/'+project_name+'.xcodeproj/project.pbxproj')
-    actions.copy_file('templates/'+template_name+'/Podfile', project_name)
+    actions.copy_file('templates/'+template_name+'/'+template_project_name,'dist/'+project_name+'/'+project_name)
+    actions.copy_file('templates/'+template_name+'/'+template_project_name+'.xcodeproj/project.pbxproj','dist/'+project_name+'/'+project_name+'.xcodeproj/project.pbxproj')
+    actions.copy_file('templates/'+template_name+'/Podfile', 'dist/'+project_name)
+    actions.copy_file('templates/' + template_name + '/.gitignore', 'dist/' + project_name)
     #rename files
-    actions.rename_file(project_name+'/'+template_project_name,project_name+'/'+project_name)
+    actions.rename_file('dist/'+project_name+'/'+template_project_name,project_name+'/'+project_name)
     #handle podfile
-    actions.replace_str_infile(project_name+'/'+'Podfile',template_project_name,project_name)
+    actions.replace_str_infile('dist/'+project_name+'/'+'Podfile',template_project_name,project_name)
     #handler projectfile
     str_list = {}
     str_list[template_project_name] = project_name
     str_list[template_organization] = organization
     str_list[template_organization_id] = organization_identify
-    actions.replace_str_infile(project_name+'/'+project_name+'.xcodeproj/project.pbxproj',str_list=str_list)
+    actions.replace_str_infile('dist/'+project_name+'/'+project_name+'.xcodeproj/project.pbxproj',str_list=str_list)
     #install pod
-    actions.pod_install(project_name+'/')
+    actions.pod_install('dist/'+project_name+'/')
+    print('\033[0;32;40m🎉🎉  your project success create at '+"dist/" + project_name + '\033[0m')
 
 # actions.generate_config('templates/swift/swift.cfg')
 
