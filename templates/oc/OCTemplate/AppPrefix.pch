@@ -1,9 +1,9 @@
 //
 //  AppPrefix.pch
-//  AmazingBuff
 //
-//  Created by bravoxu on 09/04/2018.
-//  Copyright © 2018年 Tencent. All rights reserved.
+//
+//  Created by ferrisxie on 09/04/2018.
+//  Copyright © 2018年 localOrganization. All rights reserved.
 //
 
 
@@ -23,28 +23,6 @@
 #import "FGBaseNavigationController.h"
 #import "FGBaseButton.h"
 #import "FGBaseViewController.h"
-//#import "QBCommonPrefixHeader.pch"
-//------------------------模块接入 Begin
-//分享模块
-#ifndef QK_USE_MODULE_SHARE
-//#define QK_USE_MODULE_SHARE
-#endif
-
-//TBS模块
-#ifndef QK_USE_MODULE_TBS
-//#define QK_USE_MODULE_TBS
-#endif
-
-//帐号模块
-#ifndef QK_USE_MODULE_ACCOUNT
-#define QK_USE_MODULE_ACCOUNT
-#endif
-
-//Flutter模块
-#ifndef QK_USE_MODULE_FLUTTER
-//#define QK_USE_MODULE_FLUTTER
-#endif
-//------------------------模块接入 End.
 
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
@@ -79,17 +57,6 @@ block();\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
 
-#ifdef COMMON_LOG
-#define CommonLog_i(fmt,...) NSLog(INFO_NEW_FMT(fmt),##__VA_ARGS__,nil)
-#define CommonLog_d(fmt,...) NSLog(DEBUG_NEW_FMT(fmt),##__VA_ARGS__,nil)
-#define CommonLog_w(fmt,...) NSLog(WARNING_NEW_FMT(fmt),##__VA_ARGS__,nil)
-#define CommonLog_e(fmt,...) NSLog(ERROR_NEW_FMT(fmt),##__VA_ARGS__,nil)
-#else
-#define CommonLog_i(fmt,...)
-#define CommonLog_d(fmt,...)
-#define CommonLog_w(fmt,...)
-#define CommonLog_e(fmt,...)
-#endif
 
 #undef    AS_SINGLETON
 #define AS_SINGLETON( __class ) \
