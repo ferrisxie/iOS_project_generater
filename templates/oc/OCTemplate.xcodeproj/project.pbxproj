@@ -10,7 +10,6 @@
 		6C8FA7A8213FB73E00AB5435 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FA7A7213FB73E00AB5435 /* main.m */; };
 		6C8FA7AB213FB73E00AB5435 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FA7AA213FB73E00AB5435 /* AppDelegate.m */; };
 		6C8FA7AE213FB73E00AB5435 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FA7AD213FB73E00AB5435 /* ViewController.m */; };
-		6C8FA7B1213FB73E00AB5435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C8FA7AF213FB73E00AB5435 /* Main.storyboard */; };
 		6C8FA7B3213FB73E00AB5435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C8FA7B2213FB73E00AB5435 /* Assets.xcassets */; };
 		6C8FA7B6213FB73E00AB5435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C8FA7B4213FB73E00AB5435 /* LaunchScreen.storyboard */; };
 		6C90498C213FBB33001967D1 /* FGBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C904982213FBB32001967D1 /* FGBaseCollectionViewCell.m */; };
@@ -27,7 +26,6 @@
 		6C8FA7AA213FB73E00AB5435 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6C8FA7AC213FB73E00AB5435 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6C8FA7AD213FB73E00AB5435 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6C8FA7B0213FB73E00AB5435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6C8FA7B2213FB73E00AB5435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C8FA7B5213FB73E00AB5435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C8FA7B7213FB73E00AB5435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				6C8FA7AA213FB73E00AB5435 /* AppDelegate.m */,
 				6C8FA7AC213FB73E00AB5435 /* ViewController.h */,
 				6C8FA7AD213FB73E00AB5435 /* ViewController.m */,
-				6C8FA7AF213FB73E00AB5435 /* Main.storyboard */,
 				6C8FA7B2213FB73E00AB5435 /* Assets.xcassets */,
 				6C8FA7B4213FB73E00AB5435 /* LaunchScreen.storyboard */,
 				6C8FA7B7213FB73E00AB5435 /* Info.plist */,
@@ -172,6 +169,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -192,7 +190,6 @@
 			files = (
 				6C8FA7B6213FB73E00AB5435 /* LaunchScreen.storyboard in Resources */,
 				6C8FA7B3213FB73E00AB5435 /* Assets.xcassets in Resources */,
-				6C8FA7B1213FB73E00AB5435 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,14 +214,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6C8FA7AF213FB73E00AB5435 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6C8FA7B0213FB73E00AB5435 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6C8FA7B4213FB73E00AB5435 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -335,6 +324,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/OCTemplate/AppPrefix.pch";
 				INFOPLIST_FILE = OCTemplate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = localIdentify.OCTemplate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +338,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/OCTemplate/AppPrefix.pch";
 				INFOPLIST_FILE = OCTemplate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = localIdentify.OCTemplate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
