@@ -24,6 +24,26 @@
 #import "FGBaseButton.h"
 #import "FGBaseViewController.h"
 
+//日志
+#define WXSTAT_ENABLE_LOG 1
+#if  WXSTAT_ENABLE_LOG
+#define DebugLog(...) NSLog(__VA_ARGS__)
+#else
+#define DebugLog(...) {}
+#endif
+
+//线程安全
+#define CALL_BLOCK_SAVE(block, ...) if (block) block(__VA_ARGS__);
+
+#ifndef dispatch_queue_async_safe
+#define dispatch_queue_async_safe(queue, block)\
+if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(queue)) {\
+block();\
+} else {\
+dispatch_async(queue, block);\
+}
+#endif /* async-safe */
+
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
 block();\
@@ -31,33 +51,8 @@ block();\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
 
-#define DefineWeakVarBeforeBlock(var) \
-__block __weak __typeof(var) __weak_##var = var
 
-#define DefineStrongVarInBlock(var) \
-__typeof(__weak_##var) var = __weak_##var
-
-#define DefineWeakSelfBeforeBlock() \
-__weak __typeof(self) __weak_self = self
-
-#define DefineStrongSelfInBlock(strongSelf) \
-__typeof(__weak_self) strongSelf = __weak_self
-
-#define dispatch_main_sync_safe(block)\
-if ([NSThread isMainThread]) {\
-block();\
-} else {\
-dispatch_sync(dispatch_get_main_queue(), block);\
-}
-
-#define dispatch_main_async_safe(block)\
-if ([NSThread isMainThread]) {\
-block();\
-} else {\
-dispatch_async(dispatch_get_main_queue(), block);\
-}
-
-
+//单例
 #undef    AS_SINGLETON
 #define AS_SINGLETON( __class ) \
 + (__class *)sharedInstance;

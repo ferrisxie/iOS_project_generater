@@ -17,6 +17,11 @@
 		6C90498E213FBB33001967D1 /* FGBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C904987213FBB33001967D1 /* FGBaseTableViewCell.m */; };
 		6C90498F213FBB33001967D1 /* FGBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C904988213FBB33001967D1 /* FGBaseNavigationController.m */; };
 		6C904990213FBB33001967D1 /* FGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C90498B213FBB33001967D1 /* FGBaseViewController.m */; };
+		ED63AAA32413E5A70089409C /* FGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AAA22413E5A70089409C /* FGNetworkManager.m */; };
+		ED63AC5E2413E8100089409C /* UIControl+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC5D2413E8100089409C /* UIControl+Expand.m */; };
+		ED63AC632413E8240089409C /* MBProgressHUD+Convience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC5F2413E8240089409C /* MBProgressHUD+Convience.m */; };
+		ED63AC642413E8240089409C /* NSObject+Convience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC602413E8240089409C /* NSObject+Convience.m */; };
+		ED63AC672413E8370089409C /* UIView+Convience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC662413E8370089409C /* UIView+Convience.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +46,16 @@
 		6C904989213FBB33001967D1 /* FGBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGBaseNavigationController.h; sourceTree = "<group>"; };
 		6C90498A213FBB33001967D1 /* FGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGBaseViewController.h; sourceTree = "<group>"; };
 		6C90498B213FBB33001967D1 /* FGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGBaseViewController.m; sourceTree = "<group>"; };
+		ED63AAA12413E5A70089409C /* FGNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FGNetworkManager.h; sourceTree = "<group>"; };
+		ED63AAA22413E5A70089409C /* FGNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FGNetworkManager.m; sourceTree = "<group>"; };
+		ED63AC5C2413E8100089409C /* UIControl+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Expand.h"; sourceTree = "<group>"; };
+		ED63AC5D2413E8100089409C /* UIControl+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Expand.m"; sourceTree = "<group>"; };
+		ED63AC5F2413E8240089409C /* MBProgressHUD+Convience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Convience.m"; sourceTree = "<group>"; };
+		ED63AC602413E8240089409C /* NSObject+Convience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Convience.m"; sourceTree = "<group>"; };
+		ED63AC612413E8240089409C /* MBProgressHUD+Convience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Convience.h"; sourceTree = "<group>"; };
+		ED63AC622413E8240089409C /* NSObject+Convience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Convience.h"; sourceTree = "<group>"; };
+		ED63AC652413E8370089409C /* UIView+Convience.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Convience.h"; sourceTree = "<group>"; };
+		ED63AC662413E8370089409C /* UIView+Convience.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convience.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +114,7 @@
 		6C9048DE213FB7D6001967D1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				ED63AAA02413E5950089409C /* Tools */,
 				6C9048E0213FB7EE001967D1 /* Catagrory */,
 				6C9048DF213FB7DC001967D1 /* BaseClass */,
 			);
@@ -125,8 +141,25 @@
 		6C9048E0213FB7EE001967D1 /* Catagrory */ = {
 			isa = PBXGroup;
 			children = (
+				ED63AC5C2413E8100089409C /* UIControl+Expand.h */,
+				ED63AC5D2413E8100089409C /* UIControl+Expand.m */,
+				ED63AC612413E8240089409C /* MBProgressHUD+Convience.h */,
+				ED63AC5F2413E8240089409C /* MBProgressHUD+Convience.m */,
+				ED63AC622413E8240089409C /* NSObject+Convience.h */,
+				ED63AC602413E8240089409C /* NSObject+Convience.m */,
+				ED63AC652413E8370089409C /* UIView+Convience.h */,
+				ED63AC662413E8370089409C /* UIView+Convience.m */,
 			);
 			name = Catagrory;
+			sourceTree = "<group>";
+		};
+		ED63AAA02413E5950089409C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				ED63AAA12413E5A70089409C /* FGNetworkManager.h */,
+				ED63AAA22413E5A70089409C /* FGNetworkManager.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,14 +233,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED63AC642413E8240089409C /* NSObject+Convience.m in Sources */,
+				ED63AC632413E8240089409C /* MBProgressHUD+Convience.m in Sources */,
 				6C904990213FBB33001967D1 /* FGBaseViewController.m in Sources */,
 				6C90498C213FBB33001967D1 /* FGBaseCollectionViewCell.m in Sources */,
+				ED63AAA32413E5A70089409C /* FGNetworkManager.m in Sources */,
+				ED63AC5E2413E8100089409C /* UIControl+Expand.m in Sources */,
 				6C8FA7AE213FB73E00AB5435 /* ViewController.m in Sources */,
 				6C8FA7AB213FB73E00AB5435 /* AppDelegate.m in Sources */,
 				6C8FA7A8213FB73E00AB5435 /* main.m in Sources */,
 				6C90498D213FBB33001967D1 /* FGBaseButton.m in Sources */,
 				6C90498E213FBB33001967D1 /* FGBaseTableViewCell.m in Sources */,
 				6C90498F213FBB33001967D1 /* FGBaseNavigationController.m in Sources */,
+				ED63AC672413E8370089409C /* UIView+Convience.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

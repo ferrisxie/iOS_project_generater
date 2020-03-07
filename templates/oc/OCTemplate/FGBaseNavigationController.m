@@ -8,7 +8,7 @@
 
 #import "FGBaseNavigationController.h"
 
-@interface FGBaseNavigationController () <UINavigationControllerDelegate>
+@interface FGBaseNavigationController () <UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
 @end
 
@@ -16,26 +16,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //原生导航栏背景色改为全透明
     self.navigationBar.translucent = YES;
-    self.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationBar.clipsToBounds = YES;
-    self.navigationBar.barStyle = UIBarStyleBlack;
-    self.navigationBar.backgroundColor = [UIColor clearColor];
-    [self.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self setNavigationBarHidden:YES];
+    self.interactivePopGestureRecognizer.delegate = self;
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     self.delegate = self;
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Navigation
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (self.viewControllers.count > 1)
+    {
+        self.interactivePopGestureRecognizer.enabled = YES;
+    }
+    else
+    {
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
 #pragma mark - Appearance
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return [self.topViewController preferredStatusBarStyle];
 }
 -(BOOL)shouldAutorotate
 {
@@ -50,14 +57,11 @@
 {
     return self.interactivePopGestureRecognizer;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.viewControllers.count > 1) {
+        return YES;
+    }
+    return NO;
 }
-*/
-
 @end

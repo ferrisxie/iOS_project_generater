@@ -1,6 +1,6 @@
 //
 //  UtilsMacro.h
-//  
+//
 //
 //  Created by ferrisxie on 2018/9/4.
 //  Copyright © 2018年 localOrganization. All rights reserved.
@@ -33,7 +33,6 @@
 #define fixed_screen_width MIN([UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)
 #define fixed_screen_height MAX([UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)
 
-#define NAVBAR_HEIGHT  (44 + (isiPhoneXSize() ? 44 : 20))   //每日头条红色背景高度 含状态条
 //重新设定view的Y值
 #define setFrameY(view, newY) view.frame = CGRectMake(view.frame.origin.x, newY, view.frame.size.width, view.frame.size.height)
 #define setFrameX(view, newX) view.frame = CGRectMake(newX, view.frame.origin.y, view.frame.size.width, view.frame.size.height)
@@ -72,7 +71,7 @@ autoreleasepool{} __block __typeof__(x) __block_##x##__ = x; \
 _Pragma("clang diagnostic pop")
 
 #endif
-#endif
+#endif /* weakify */
 
 #ifndef strongify
 #if __has_feature(objc_arc)
@@ -92,9 +91,17 @@ try{} @finally{} __typeof__(x) x = __block_##x##__; \
 _Pragma("clang diagnostic pop")
 
 #endif
-#endif
+#endif /* strongify */
 
 #pragma mark - Functions
+
+#define WXT_KEYWINDOW [UIApplication sharedApplication].keyWindow
+
+#define LOGIN_PROTECTED     if(![WXTUserCenter sharedInstance].isLogin){\
+    [MBProgressHUD wxt_showText:@"未登录"];\
+    return;\
+}
+
 CG_INLINE CGPoint CGRectCenter(CGRect rect);
 
 CG_INLINE CGPoint CGRectCenter(CGRect rect) {
@@ -113,3 +120,4 @@ __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 #define isiPhoneXSize fixed_screen_height == 812.0f
 #define NAVBAR_HEIGHT  (44 + (isiPhoneXSize ? 44 : 20))   //每日头条红色背景高度 含状态条
 #endif /* UtilsMacro_h */
+
