@@ -12,4 +12,6 @@
 @property (nonatomic, assign) CGFloat minAlpha;
 @property (nonatomic, assign) CGFloat horizontalMargin;
 @property (nonatomic, assign) CGFloat bottomMargin;
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state;
 @end

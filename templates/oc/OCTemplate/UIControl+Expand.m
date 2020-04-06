@@ -1,16 +1,16 @@
 //
 //  UIControl+Expand.m
-//  WXTeacherBoard
+//  FGeacherBoard
 //
 //  Created by Ferris on 2020/3/2.
-//  Copyright © 2020 Tal100. All rights reserved.
+//  Copyright © 2020 localOrganization. All rights reserved.
 //
 
 #import "UIControl+Expand.h"
 #import <objc/runtime.h>
-
+#import "UIView+Convience.h"
 static char associateLengthKey;
-@implementation WXTLargeFakeControl
+@implementation FGLargeFakeControl
 -(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     UIView *hitView = [super hitTest:point withEvent:event];
@@ -26,10 +26,10 @@ static char associateLengthKey;
 
 
 @implementation UIControl (Expand)
-- (WXTLargeFakeControl *)fakeControl{
+- (FGLargeFakeControl *)fakeControl{
     return objc_getAssociatedObject(self, &associateLengthKey);
 }
--(void)setFakeControl:(WXTLargeFakeControl *)fakeControl
+-(void)setFakeControl:(FGLargeFakeControl *)fakeControl
 {
     objc_setAssociatedObject(self, &associateLengthKey, fakeControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -37,7 +37,7 @@ static char associateLengthKey;
 {
     if(self.superview)
     {
-        WXTLargeFakeControl* fakeControl = [[WXTLargeFakeControl alloc] init];
+        FGLargeFakeControl* fakeControl = [[FGLargeFakeControl alloc] init];
         fakeControl.backgroundColor = [UIColor clearColor];
         fakeControl.userInteractionEnabled = YES;
         fakeControl.realControl = self;
@@ -67,7 +67,7 @@ static char associateLengthKey;
     }
 }
 - (void)reArrangedFakeControl{
-    WXTLargeFakeControl* fake = [self fakeControl];
+    FGLargeFakeControl* fake = [self fakeControl];
     if(fake && !fake.useAutolayout){
         fake.frame = UIEdgeInsetsInsetRect(self.frame,fake.expandArea);
     }

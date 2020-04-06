@@ -29,7 +29,7 @@ NSString* const FGNetWorkStatusChangeNotificationName = @"com.localhost.FGNetWor
         _reachabilityMangaer = [AFNetworkReachabilityManager sharedManager];
         [_reachabilityMangaer startMonitoring];
         [_reachabilityMangaer setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:WXTNetWorkStatusChangeNotificationName object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:FGNetWorkStatusChangeNotificationName object:nil];
         }];
     }
     return self;

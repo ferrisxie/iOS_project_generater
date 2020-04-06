@@ -13,117 +13,110 @@
 #define UIColorNavigationBar [UIColor blackColor]
 @interface FGBaseViewController ()
 {
-    UIView* _navigationbarBackgroundView;
+    UIView* _fakeNavigationBar;
+    UILabel* _fakeTitleLabel;
+    UIButton* _fakeBackButton;
+    UILabel* _backButtonLabel;
+    
+    FGRouteAddress* _routeAddress;
+    
+    UITableView* _tableView;
 }
 @end
 
 @implementation FGBaseViewController
-
+- (instancetype)initFromFGAddress:(FGRouteAddress *)address{
+    if(self = [super init]){
+        _routeAddress = address;
+    }
+    return self;
+}
+-(FGRouteAddress *)routeAddress{
+    return _routeAddress;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.shouldEnablePopGesture = YES;
     if(!self.shouldHideNavigationBar){
-        [self.view bringSubviewToFront:self.navigationbarBackgroundView];
+        [self.view bringSubviewToFront:self.fakeNavigationBar];
+        [self setUpNavigationButtons];
     }
     self.title = @"标题";
+    self.view.backgroundColor = UIColor.whiteColor;
+    [FGLogTool addLog:[NSString stringWithFormat:@"viewDidLoad-%@",NSStringFromClass(self.class)] withLevel:FGLogLevelFatal];
+}
+-(void)setShouldHideNavigationBar:(BOOL)shouldHideNavigationBar{
+    _shouldHideNavigationBar = shouldHideNavigationBar;
+    _fakeNavigationBar.hidden = shouldHideNavigationBar;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(!self.shouldHideNavigationBar){
-        [self.view bringSubviewToFront:self.navigationbarBackgroundView];
+        [self.view bringSubviewToFront:self.fakeNavigationBar];
     }
+    [FGLogTool addLog:[NSString stringWithFormat:@"viewWillAppear-%@",NSStringFromClass(self.class)] withLevel:FGLogLevelFatal];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [FGLogTool addLog:[NSString stringWithFormat:@"viewDidAppear-%@",NSStringFromClass(self.class)] withLevel:FGLogLevelFatal];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-#pragma mark - Actions
-- (void)showEmptyViewWithMessage:(NSString *)msg actionTitle:(NSString *)title actionHandler:(void (^)(void))handler{
-    self.isEmpty = YES;
-//    [self hideLoadingViewWithAnimated:NO];
-//    [self hideOtherViewWithAnimated:NO];
-    //监测是否存在
-    UIView* exitView = [self.view viewWithTag:EmptyMsgViewTag];
-    //隐藏mainView
-    if(self.mainView)
-    {
-        self.mainView.hidden = YES;
-    }
-    if(exitView)
-    {
-        exitView.hidden = NO;
-        return;
-    }
-    else{
-        UILabel* emptyTitleView = [[UILabel alloc] init];
-        emptyTitleView.text = msg;
-        emptyTitleView.textAlignment = NSTextAlignmentCenter;
-        emptyTitleView.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
-        emptyTitleView.tag = EmptyMsgViewTag;
-//        emptyTitleView.font = [MainFont fontWithSize:14];
-        [self.view addSubview:emptyTitleView];
-        
-        UIButton* emptyAction = [UIButton buttonWithType:UIButtonTypeCustom];
-        [emptyAction setTitle:title forState:UIControlStateNormal];
-//        emptyAction.titleLabel.font = [MainFont fontWithSize:14];
-        emptyAction.tag = EmptyActionBTTag;
-        [emptyAction setTitleColor:UIColorFromRGB(0x3095FF) forState:UIControlStateNormal];
-        [self.view addSubview:emptyAction];
-        
-        [emptyAction bk_addEventHandler:^(id sender) {
-            if(handler)
-            {
-                handler();
-            }
-        } forControlEvents:UIControlEventTouchUpInside];
-        [emptyAction mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(0);
-            make.top.mas_equalTo(265);
-            make.width.mas_equalTo(90);
-            make.height.mas_equalTo(20);
-        }];
-        [emptyTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(0);
-            make.bottom.mas_equalTo(emptyAction.mas_top).offset(-6);
-            make.left.right.mas_equalTo(0);
-            make.height.mas_equalTo(20);
-        }];
-    }
-}
--(void)hideEmptyViewWithAnimated:(BOOL)shouldAnimation
-{
-    self.isEmpty = NO;
-    if(self.mainView)
-    {
-        self.mainView.hidden = NO;
-    }
-    UIView* emptyTitleView = [self.view viewWithTag:EmptyMsgViewTag];
-    UIView* emptyActionView = [self.view viewWithTag:EmptyActionBTTag];
-    if(emptyTitleView && emptyActionView)
-    {
-        if(shouldAnimation)
-        {
-            [UIView animateWithDuration:0.3f animations:^{
-                emptyActionView.alpha = 0;
-                emptyTitleView.alpha = 0;
-            } completion:^(BOOL finished) {
-                if(finished)
-                {
-//                    [self showOtherViewWithAnimated:shouldAnimation];
-                    //销毁
-                    [emptyActionView removeFromSuperview];
-                    [emptyTitleView removeFromSuperview];
-                }
-            }];
-        }else
-        {
-//            [self showOtherViewWithAnimated:shouldAnimation];
-            [emptyActionView removeFromSuperview];
-            [emptyTitleView removeFromSuperview];
-        }
-    }
-}
 - (void)refreshData{
 }
-#pragma mark - Setter & Getter
+-(void)setUpNavigationButtons{
+
+    _fakeTitleLabel = [[UILabel alloc] init];
+    _fakeTitleLabel.textAlignment = NSTextAlignmentCenter;
+    _fakeTitleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+    _fakeTitleLabel.textColor = UIColorFromRGB(0x333333);
+    [_fakeNavigationBar addSubview:_fakeTitleLabel];
+    [_fakeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(0);
+        make.centerY.mas_equalTo(BATTERY_HEIGHT / 2.0f);
+    }];
+    _fakeTitleLabel.hidden = YES;
+
+    if(self.navigationController.viewControllers.count > 1){
+        FGBaseButton* backButton = [[FGBaseButton alloc] init];
+        UIImageView* backImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
+        [backButton addSubview:backImgView];
+        [backImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(16);
+            make.size.mas_equalTo(CGSizeMake(12, 20));
+            make.centerY.mas_equalTo(BATTERY_HEIGHT / 2.0f);
+        }];
+        
+        UILabel* backButtonLabel = [UILabel new];
+        backButtonLabel.textAlignment = NSTextAlignmentLeft;
+        backButtonLabel.textColor = UIColorFromRGB(0x333333);
+        backButtonLabel.font = [UIFont systemFontOfSize:14];
+        [backButton addSubview:backButtonLabel];
+        [backButtonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(backImgView.mas_right).offset(9);
+            make.width.mas_equalTo(100);
+            make.centerY.mas_equalTo(BATTERY_HEIGHT / 2.0f);
+        }];
+        _backButtonLabel = backButtonLabel;
+        
+        [_fakeNavigationBar addSubview:backButton];
+        [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(0);
+            make.top.mas_equalTo(0);
+            make.size.mas_equalTo(CGSizeMake(150, NAVBAR_HEIGHT));
+        }];
+        [backButton addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+        _fakeBackButton = backButton;
+    }
+}
+-(void)goback{
+    if(self.presentingViewController){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else if(self.navigationController.viewControllers.count > 1){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 -(BOOL)isEmpty
 {
     if(_isEmpty)
@@ -147,19 +140,58 @@
     }
     return NO;
 }
--(UIView *)navigationbarBackgroundView{
-    if(_navigationbarBackgroundView){
-        return _navigationbarBackgroundView;
+-(void)setTitle:(NSString *)title{
+    [super setTitle:title];
+    _fakeTitleLabel.text = title;
+    if(title && title.length > 0){
+        _fakeTitleLabel.hidden = NO;
+    }else{
+        _fakeTitleLabel.hidden = YES;
     }
-    _navigationbarBackgroundView = [[UIView alloc] init];
-    [self.view addSubview:_navigationbarBackgroundView];
-    [self.view bringSubviewToFront:_navigationbarBackgroundView];
-    [_navigationbarBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+}
+-(UIView *)fakeNavigationBar{
+    if(_fakeNavigationBar){
+        return _fakeNavigationBar;
+    }
+    _fakeNavigationBar = [[UIView alloc] init];
+    [self.view addSubview:_fakeNavigationBar];
+    [self.view bringSubviewToFront:_fakeNavigationBar];
+    [_fakeNavigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
         make.height.mas_equalTo(NAVBAR_HEIGHT);
     }];
-    _navigationbarBackgroundView.backgroundColor = UIColorNavigationBar;
-    return _navigationbarBackgroundView;
+    _fakeNavigationBar.backgroundColor = UIColorNavigationBar;
+    return _fakeNavigationBar;
 }
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
+- (UITableView *)tableView{
+    if(!_tableView){
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, screen_width, screen_height - NAVBAR_HEIGHT) style:UITableViewStyleGrouped];
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.backgroundColor = UIColor.whiteColor;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            // Fallback on earlier versions
+        }
+        _tableView.backgroundColor = UIColor.whiteColor;
+        _tableView.contentInset = UIEdgeInsetsZero;
+         self.automaticallyAdjustsScrollViewInsets = NO;
+        [self.view addSubview:_tableView];
+    }
+    return _tableView;
+}
+- (void)setBackButtonTitle:(NSString *)backButtonTitle{
+    _backButtonTitle = backButtonTitle;
+    _backButtonLabel.text = backButtonTitle;
+}
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscape;
+}
 @end

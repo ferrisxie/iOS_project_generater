@@ -13,21 +13,10 @@
 
 #ifdef __OBJC__
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <Masonry.h>
-#import "UtilsMacro.h"
-#import <BlocksKit+UIKit.h>
-#import <Block.h>
-#import "FGBaseViewController.h"
-#import "FGBaseNavigationController.h"
-#import "FGBaseButton.h"
-#import "FGBaseViewController.h"
-
-//日志
-#define WXSTAT_ENABLE_LOG 1
-#if  WXSTAT_ENABLE_LOG
-#define DebugLog(...) NSLog(__VA_ARGS__)
+#define FGSTAT_ENABLE_LOG 1
+#if  FGSTAT_ENABLE_LOG
+#define DebugLog(s, ...)  NSLog(@"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], \
+__LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 #else
 #define DebugLog(...) {}
 #endif
@@ -50,8 +39,6 @@ block();\
 } else {\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
-
-
 //单例
 #undef    AS_SINGLETON
 #define AS_SINGLETON( __class ) \
@@ -66,6 +53,40 @@ static __class * __singleton__; \
 dispatch_once( &once, ^{ __singleton__ = [[__class alloc] init]; } ); \
 return __singleton__; \
 }
+
+#define kFGUserEventCommonModelKey @"com.fg.kFGUserEventCommonModelKey"
+#define kFGUserEventCommonStringKey @"com.fg.kFGUserEventCommonStringKey"
+#define kFGUserEventCommonBOOLKey @"com.fg.kFGUserEventCommonBOOLKey"
+#define kFGUserEventCommonNumberKey @"com.fg.kFGUserEventCommonNumberKey"
+
+
+//通知
+#define kUserLoginStatusDidChangeNotification @"com.fg.notification.kUserLoginStatusDidChangeNotification"
+#define kSystemWillCrashNotifictaion @"com.fg.notification.kSystemWillCrashNotifictaion"
+#define kDidGetFatalErrorNotifictaion @"com.fg.notification.kDidGetFatalErrorNotifictaion"//子业务fatalError的时候
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Masonry.h>
+#import "UtilsMacro.h"
+#import <BlocksKit+UIKit.h>
+#import <Block.h>
+#import "FGBaseViewController.h"
+#import "FGBaseNavigationController.h"
+#import "FGBaseButton.h"
+#import "FGBaseViewController.h"
+#import "FGRoute.h"
+#import "FGLogTool.h"
+#import "FGContext.h"
+typedef enum : NSUInteger {
+   FGEventTypeNone
+} FGEventType;
+@protocol FGCommonEventDelegate <NSObject>
+
+@optional
+-(void)sender:(id)sender didInvokeEvent:(FGEventType)eventType withUserInfo:(NSDictionary*)uInfo;
+
+@end
 
 
 #endif

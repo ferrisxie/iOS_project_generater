@@ -1,18 +1,18 @@
 //
 //  MBProgressHUD+Convience.m
-//  WXTeacherBoard
+//  FGeacherBoard
 //
 //  Created by Ferris on 2020/3/3.
-//  Copyright © 2020 100tal. All rights reserved.
+//  Copyright © 2020 localOrganization. All rights reserved.
 //
 
 #import "MBProgressHUD+Convience.h"
 
-
+#import "NSObject+Convience.h"
 
 
 @implementation MBProgressHUD (Convience)
-+(MBProgressHUD *)wxt_showLoading:(NSString *)text delay:(CGFloat)delay inView:(UIView*)view;
++(MBProgressHUD *)FG_showLoading:(NSString *)text delay:(CGFloat)delay inView:(UIView*)view;
 {
     MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
     [UIActivityIndicatorView appearanceWhenContainedInInstancesOfClasses:@[[MBProgressHUD class]]].color = [UIColor whiteColor];
@@ -26,7 +26,7 @@
     [hud hideAnimated:YES afterDelay:delay];
     return hud;
 }
-+(MBProgressHUD *)wxt_showLoading:(NSString *)text inView:(UIView*)view;
++(MBProgressHUD *)FG_showLoading:(NSString *)text inView:(UIView*)view;
 {
     MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
     [UIActivityIndicatorView appearanceWhenContainedInInstancesOfClasses:@[[MBProgressHUD class]]].color = [UIColor whiteColor];
@@ -38,15 +38,15 @@
     hud.label.text = text;
     return hud;
 }
-+(void)wxt_hideForView:(UIView *)view{
++(void)FG_hideForView:(UIView *)view{
     [NSObject runBlockInMainThreadFastestLoop:^{
         [MBProgressHUD hideHUDForView:view animated:YES];
     }];
 }
-+ (MBProgressHUD *)wxt_showText:(NSString *)text delay:(CGFloat)delay {
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:WXT_KEYWINDOW];
++ (MBProgressHUD *)FG_showText:(NSString *)text delay:(CGFloat)delay {
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:FG_KEYWINDOW];
     if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:WXT_KEYWINDOW animated:YES];
+        hud = [MBProgressHUD showHUDAddedTo:FG_KEYWINDOW animated:YES];
     }
     hud.margin = 16;
     hud.offset = CGPointMake(0, screen_height/2-91.5);
@@ -74,10 +74,10 @@
     return hud;
 }
 
-+ (MBProgressHUD *)wxt_showTextCenter:(NSString *)text delay:(CGFloat)delay {
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:WXT_KEYWINDOW];
++ (MBProgressHUD *)FG_showTextCenter:(NSString *)text delay:(CGFloat)delay {
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:FG_KEYWINDOW];
     if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:WXT_KEYWINDOW animated:YES];
+        hud = [MBProgressHUD showHUDAddedTo:FG_KEYWINDOW animated:YES];
     }
     hud.margin = 7;
 //    hud.offset = CGPointMake(0, screen_height/2-91.5);
@@ -92,7 +92,7 @@
     [hud hideAnimated:YES afterDelay:delay];
     return hud;
 }
-+(MBProgressHUD*)wxt_showText:(NSString*)text inView:(UIView*)view delay:(CGFloat)delay
++(MBProgressHUD*)FG_showText:(NSString*)text inView:(UIView*)view delay:(CGFloat)delay
 {
     MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
     if (!hud) {
@@ -110,12 +110,12 @@
     [hud hideAnimated:YES afterDelay:delay];
     return hud;
 }
-+ (MBProgressHUD *)wxt_showText:(NSString *)text {
-    return [self wxt_showText:text delay:1];
++ (MBProgressHUD *)FG_showText:(NSString *)text {
+    return [self FG_showText:text delay:1];
 }
 
-+(MBProgressHUD *)wxt_showTextCenter:(NSString *)text {
-    return [self wxt_showTextCenter:text delay:1];
++(MBProgressHUD *)FG_showTextCenter:(NSString *)text {
+    return [self FG_showTextCenter:text delay:1];
 }
 
 @end

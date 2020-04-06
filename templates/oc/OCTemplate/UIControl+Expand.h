@@ -1,9 +1,9 @@
 //
 //  UIControl+Expand.h
-//  WXTeacherBoard
+//  FGeacherBoard
 //
 //  Created by Ferris on 2020/3/2.
-//  Copyright © 2020 Tal100. All rights reserved.
+//  Copyright © 2020 localOrganization. All rights reserved.
 //
 
 

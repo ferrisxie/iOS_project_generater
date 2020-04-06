@@ -1,9 +1,9 @@
 //
 //  MBProgressHUD+Convience.h
-//  WXTeacherBoard
+//  FGeacherBoard
 //
 //  Created by Ferris on 2020/3/3.
-//  Copyright © 2020 100tal. All rights reserved.
+//  Copyright © 2020 localOrganization. All rights reserved.
 //
 
 #import "MBProgressHUD.h"
@@ -11,13 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MBProgressHUD (Convience)
-+(MBProgressHUD *)wxt_showLoading:(NSString *)text inView:(UIView*)view;
-+(MBProgressHUD *)wxt_showLoading:(NSString *)text delay:(CGFloat)delay inView:(UIView*)view;
-+(void)wxt_hideForView:(UIView *)view;
-+ (MBProgressHUD *)wxt_showText:(NSString *)text delay:(CGFloat)delay;
-+ (MBProgressHUD *)wxt_showText:(NSString *)text;
-+ (MBProgressHUD *)wxt_showTextCenter:(NSString *)text delay:(CGFloat)delay;
-+ (MBProgressHUD *)wxt_showTextCenter:(NSString *)text;
++(MBProgressHUD *)FG_showLoading:(NSString *)text inView:(UIView*)view;
++(MBProgressHUD *)FG_showLoading:(NSString *)text delay:(CGFloat)delay inView:(UIView*)view;
++(void)FG_hideForView:(UIView *)view;
++ (MBProgressHUD *)FG_showText:(NSString *)text delay:(CGFloat)delay;
++ (MBProgressHUD *)FG_showText:(NSString *)text;
++ (MBProgressHUD *)FG_showTextCenter:(NSString *)text delay:(CGFloat)delay;
++ (MBProgressHUD *)FG_showTextCenter:(NSString *)text;
 @end
 
 NS_ASSUME_NONNULL_END

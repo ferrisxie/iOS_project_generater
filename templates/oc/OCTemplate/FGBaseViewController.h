@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FGRoute.h"
+@interface FGBaseViewController : UIViewController<FGViewControllerRouteProtocol>
+- (instancetype)initFromFGAddress:(FGRouteAddress *)address;
 
-@interface FGBaseViewController : UIViewController
+@property (nonatomic, strong) NSString* backButtonTitle;
+@property (nonatomic, readonly) FGRouteAddress* routeAddress;
 /**
  是否隐藏导航栏，默认为NO。
  */
@@ -20,25 +24,17 @@
 /**
  导航栏，默认背景色，需要半透明的页面自己处理
  */
-@property (nonatomic,readonly) UIView* navigationbarBackgroundView;
+@property (nonatomic,readonly) UIView* fakeNavigationBar;
 /**
  保留一个对mainView的引用(承载主要内容的view)
  */
 @property (nonatomic,weak) UIView* mainView;
 /**
- 空页面时需要展示的Tips，使用时需要指定{{mainView}}
- 如果指定了{{mainView}}，hide的时候会显示mainView
- @param msg 消息内容
- @param title 按钮内容
- @param handler 事件
- @return EmptyView(不用手动addsubview了)
- */
--(void)showEmptyViewWithMessage:(NSString*)msg actionTitle:(NSString*)title actionHandler:(void(^)(void))handler;
-
--(void)hideEmptyViewWithAnimated:(BOOL)shouldAnimation;
-/**
  @brief 刷新数据
  */
 -(void)refreshData;
+-(void)goback;
+@property (nonatomic, readonly) UITableView* tableView;
 
+@property (nonatomic, assign) BOOL shouldEnablePopGesture;
 @end

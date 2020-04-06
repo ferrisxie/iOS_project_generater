@@ -8,7 +8,11 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-
+#import "FGLogTool.h"
+#import "FGCrashProtector.h"
+#import "FGContext.h"
+#import "FGRoute.h"
+#import "FGViewControllerFactory.h"
 @interface AppDelegate ()
 
 @end
@@ -17,11 +21,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //step0: 初始化基础模块
+    [FGCrashProtector setUp];
+    [FGLogTool setUp];
+//    if(FGContext.sharedInstance.isDebugEnv){
+//        YYFPSLabel* fpsLabel = [YYFPSLabel new];
+//        [self.window addSubview:fpsLabel];
+//        fpsLabel.left = 20;
+//        fpsLabel.bottom = screen_height - 20;
+//    }
+    //step1: 读取登录缓存并且通知业务
+//    [[FGUserCenter sharedInstance] readUserInfoFromCacheAndNotify];
+    //step2: 初始化UI
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-      ViewController* mainVC = [[ViewController alloc] init];
-    self.window.rootViewController = mainVC;
+    UIViewController* rootViewController = [FGViewControllerFactory viewControllerFromURL:@""];
+    FGBaseNavigationController* navi = [[FGBaseNavigationController alloc] initWithRootViewController:rootViewController];
+    self.window.rootViewController = navi;
     [self.window makeKeyAndVisible];
+    [FGRoute setRootNavigationController:navi];
     return YES;
 }
 

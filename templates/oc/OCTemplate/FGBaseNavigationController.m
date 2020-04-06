@@ -13,9 +13,9 @@
 @end
 
 @implementation FGBaseNavigationController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     self.navigationBar.translucent = YES;
     [self setNavigationBarHidden:YES];
     self.interactivePopGestureRecognizer.delegate = self;
@@ -59,9 +59,13 @@
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    if (self.viewControllers.count > 1) {
+    UIViewController* topVC = [self topViewController];
+    if([topVC isKindOfClass:FGBaseViewController.class] && self.viewControllers.count > 1){
+        return [(FGBaseViewController*)topVC shouldEnablePopGesture];
+    }else if(self.viewControllers.count > 1){
         return YES;
     }
     return NO;
 }
+
 @end

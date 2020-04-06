@@ -9,13 +9,16 @@
 #import "FGBaseButton.h"
 #define DefaultMinAlpha 0.5
 @implementation FGBaseButton
-
+{
+    NSMutableDictionary<NSNumber*,UIColor*>* _backgroundColorDic;
+}
 - (instancetype)init
 {
     self = [super init];
     if (!self) {
         return nil;
     }
+    _backgroundColorDic = [NSMutableDictionary dictionary];
     [self commonInit];
     return self;
 }
@@ -58,24 +61,27 @@
         [self setAlpha:1.0];
     }
 }
-
-//- (void)positionToFit
-//{
-//    [super positionToFit];
-//    CGRect frame = self.frame;
-//    if (self.position == MttBarButtonPositionLeft && _horizontalMargin>0) {
-//        frame.origin.x = _horizontalMargin;
-//    }
-//    else if (self.position == MttBarButtonPositionRight && _horizontalMargin>0) {
-//        frame.origin.x = self.superview.bounds.size.width - _horizontalMargin - frame.size.width;
-//    }
-//    else if (self.position == MttBarButtonPositionSecondRight && _horizontalMargin>0) {
-//        frame.origin.x = self.superview.bounds.size.width - _horizontalMargin - frame.size.width * 2;
-//    }
-//    if (_bottomMargin>0) {
-//        frame.origin.y = self.superview.bounds.size.height - _bottomMargin - frame.size.height;
-//    }
-//    self.frame = frame;
-//}
+-(void)setBackgroundColor:(UIColor *)backgroundColor{
+    [super setBackgroundColor:backgroundColor];
+    if(backgroundColor){
+        [_backgroundColorDic setObject:backgroundColor forKey:@(UIControlStateNormal)];
+    }
+}
+-(UIColor*)colorForState:(UIControlState)state{
+    if([_backgroundColorDic objectForKey:@(state)]){
+        return [_backgroundColorDic objectForKey:@(state)];
+    }else{
+        if([_backgroundColorDic objectForKey:@(UIControlStateNormal)]){
+            return [_backgroundColorDic objectForKey:@(UIControlStateNormal)];
+        }else{
+            return nil;
+        }
+    }
+}
+-(void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state{
+    if(backgroundColor){
+        [_backgroundColorDic setObject:backgroundColor forKey:@(state)];
+    }
+}
 
 @end

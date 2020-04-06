@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34CE343EFF5CAD6DCFEE6B26 /* libPods-OCTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6682B57979519FDDA226922D /* libPods-OCTemplate.a */; };
 		6C8FA7A8213FB73E00AB5435 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FA7A7213FB73E00AB5435 /* main.m */; };
 		6C8FA7AB213FB73E00AB5435 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FA7AA213FB73E00AB5435 /* AppDelegate.m */; };
 		6C8FA7AE213FB73E00AB5435 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FA7AD213FB73E00AB5435 /* ViewController.m */; };
@@ -22,9 +23,18 @@
 		ED63AC632413E8240089409C /* MBProgressHUD+Convience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC5F2413E8240089409C /* MBProgressHUD+Convience.m */; };
 		ED63AC642413E8240089409C /* NSObject+Convience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC602413E8240089409C /* NSObject+Convience.m */; };
 		ED63AC672413E8370089409C /* UIView+Convience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED63AC662413E8370089409C /* UIView+Convience.m */; };
+		EDAD46AC243AD0C700E73398 /* FGBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46AB243AD0C700E73398 /* FGBaseView.m */; };
+		EDAD46B2243AE7B300E73398 /* FGRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46B1243AE7B300E73398 /* FGRefreshHeader.m */; };
+		EDAD46B5243AE80D00E73398 /* FGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46B4243AE80D00E73398 /* FGContext.m */; };
+		EDAD46B8243AE88100E73398 /* FGRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46B7243AE88100E73398 /* FGRoute.m */; };
+		EDAD46BE243AE8CC00E73398 /* FGViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46BB243AE8CC00E73398 /* FGViewControllerFactory.m */; };
+		EDAD46BF243AE8CC00E73398 /* FGRouteAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46BD243AE8CC00E73398 /* FGRouteAddress.m */; };
+		EDAD46C4243AE99300E73398 /* FGCrashProtector.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46C1243AE99200E73398 /* FGCrashProtector.m */; };
+		EDAD46C5243AE99300E73398 /* FGLogTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAD46C3243AE99200E73398 /* FGLogTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6682B57979519FDDA226922D /* libPods-OCTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OCTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C8FA7A3213FB73E00AB5435 /* OCTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C8FA7A7213FB73E00AB5435 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6C8FA7A9213FB73E00AB5435 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +56,8 @@
 		6C904989213FBB33001967D1 /* FGBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGBaseNavigationController.h; sourceTree = "<group>"; };
 		6C90498A213FBB33001967D1 /* FGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGBaseViewController.h; sourceTree = "<group>"; };
 		6C90498B213FBB33001967D1 /* FGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGBaseViewController.m; sourceTree = "<group>"; };
+		B92398C01F2EB1CD816375C0 /* Pods-OCTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCTemplate.debug.xcconfig"; path = "Target Support Files/Pods-OCTemplate/Pods-OCTemplate.debug.xcconfig"; sourceTree = "<group>"; };
+		D45731420ECB2F55B6D790F3 /* Pods-OCTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCTemplate.release.xcconfig"; path = "Target Support Files/Pods-OCTemplate/Pods-OCTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		ED63AAA12413E5A70089409C /* FGNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FGNetworkManager.h; sourceTree = "<group>"; };
 		ED63AAA22413E5A70089409C /* FGNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FGNetworkManager.m; sourceTree = "<group>"; };
 		ED63AC5C2413E8100089409C /* UIControl+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Expand.h"; sourceTree = "<group>"; };
@@ -56,6 +68,22 @@
 		ED63AC622413E8240089409C /* NSObject+Convience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Convience.h"; sourceTree = "<group>"; };
 		ED63AC652413E8370089409C /* UIView+Convience.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Convience.h"; sourceTree = "<group>"; };
 		ED63AC662413E8370089409C /* UIView+Convience.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convience.m"; sourceTree = "<group>"; };
+		EDAD46AA243AD0C700E73398 /* FGBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FGBaseView.h; sourceTree = "<group>"; };
+		EDAD46AB243AD0C700E73398 /* FGBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FGBaseView.m; sourceTree = "<group>"; };
+		EDAD46B0243AE7B300E73398 /* FGRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FGRefreshHeader.h; sourceTree = "<group>"; };
+		EDAD46B1243AE7B300E73398 /* FGRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FGRefreshHeader.m; sourceTree = "<group>"; };
+		EDAD46B3243AE80D00E73398 /* FGContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FGContext.h; sourceTree = "<group>"; };
+		EDAD46B4243AE80D00E73398 /* FGContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FGContext.m; sourceTree = "<group>"; };
+		EDAD46B6243AE88100E73398 /* FGRoute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FGRoute.h; sourceTree = "<group>"; };
+		EDAD46B7243AE88100E73398 /* FGRoute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FGRoute.m; sourceTree = "<group>"; };
+		EDAD46BA243AE8CC00E73398 /* FGRouteAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGRouteAddress.h; sourceTree = "<group>"; };
+		EDAD46BB243AE8CC00E73398 /* FGViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGViewControllerFactory.m; sourceTree = "<group>"; };
+		EDAD46BC243AE8CC00E73398 /* FGViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGViewControllerFactory.h; sourceTree = "<group>"; };
+		EDAD46BD243AE8CC00E73398 /* FGRouteAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGRouteAddress.m; sourceTree = "<group>"; };
+		EDAD46C0243AE99200E73398 /* FGCrashProtector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGCrashProtector.h; sourceTree = "<group>"; };
+		EDAD46C1243AE99200E73398 /* FGCrashProtector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGCrashProtector.m; sourceTree = "<group>"; };
+		EDAD46C2243AE99200E73398 /* FGLogTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGLogTool.h; sourceTree = "<group>"; };
+		EDAD46C3243AE99200E73398 /* FGLogTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGLogTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CE343EFF5CAD6DCFEE6B26 /* libPods-OCTemplate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +103,8 @@
 			children = (
 				6C8FA7A5213FB73E00AB5435 /* OCTemplate */,
 				6C8FA7A4213FB73E00AB5435 /* Products */,
+				DC37283C9767F17D2AED3BAE /* Pods */,
+				99F33A07F8C2878D172F7264 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +145,7 @@
 		6C9048DE213FB7D6001967D1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				EDAD46B9243AE8BD00E73398 /* Route */,
 				ED63AAA02413E5950089409C /* Tools */,
 				6C9048E0213FB7EE001967D1 /* Catagrory */,
 				6C9048DF213FB7DC001967D1 /* BaseClass */,
@@ -134,6 +166,8 @@
 				6C904987213FBB33001967D1 /* FGBaseTableViewCell.m */,
 				6C90498A213FBB33001967D1 /* FGBaseViewController.h */,
 				6C90498B213FBB33001967D1 /* FGBaseViewController.m */,
+				EDAD46AA243AD0C700E73398 /* FGBaseView.h */,
+				EDAD46AB243AD0C700E73398 /* FGBaseView.m */,
 			);
 			name = BaseClass;
 			sourceTree = "<group>";
@@ -153,13 +187,52 @@
 			name = Catagrory;
 			sourceTree = "<group>";
 		};
+		99F33A07F8C2878D172F7264 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6682B57979519FDDA226922D /* libPods-OCTemplate.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC37283C9767F17D2AED3BAE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B92398C01F2EB1CD816375C0 /* Pods-OCTemplate.debug.xcconfig */,
+				D45731420ECB2F55B6D790F3 /* Pods-OCTemplate.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ED63AAA02413E5950089409C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				EDAD46C0243AE99200E73398 /* FGCrashProtector.h */,
+				EDAD46C1243AE99200E73398 /* FGCrashProtector.m */,
+				EDAD46C2243AE99200E73398 /* FGLogTool.h */,
+				EDAD46C3243AE99200E73398 /* FGLogTool.m */,
 				ED63AAA12413E5A70089409C /* FGNetworkManager.h */,
 				ED63AAA22413E5A70089409C /* FGNetworkManager.m */,
+				EDAD46B0243AE7B300E73398 /* FGRefreshHeader.h */,
+				EDAD46B1243AE7B300E73398 /* FGRefreshHeader.m */,
+				EDAD46B3243AE80D00E73398 /* FGContext.h */,
+				EDAD46B4243AE80D00E73398 /* FGContext.m */,
 			);
 			name = Tools;
+			sourceTree = "<group>";
+		};
+		EDAD46B9243AE8BD00E73398 /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				EDAD46BC243AE8CC00E73398 /* FGViewControllerFactory.h */,
+				EDAD46BB243AE8CC00E73398 /* FGViewControllerFactory.m */,
+				EDAD46BA243AE8CC00E73398 /* FGRouteAddress.h */,
+				EDAD46BD243AE8CC00E73398 /* FGRouteAddress.m */,
+				EDAD46B6243AE88100E73398 /* FGRoute.h */,
+				EDAD46B7243AE88100E73398 /* FGRoute.m */,
+			);
+			name = Route;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,9 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C8FA7BA213FB73E00AB5435 /* Build configuration list for PBXNativeTarget "OCTemplate" */;
 			buildPhases = (
+				F6BFBFB304D99DD14250B1D4 /* [CP] Check Pods Manifest.lock */,
 				6C8FA79F213FB73E00AB5435 /* Sources */,
 				6C8FA7A0213FB73E00AB5435 /* Frameworks */,
 				6C8FA7A1213FB73E00AB5435 /* Resources */,
+				C8448F612BD9D223C894218B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,24 +303,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C8448F612BD9D223C894218B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OCTemplate/Pods-OCTemplate-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OCTemplate/Pods-OCTemplate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6BFBFB304D99DD14250B1D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OCTemplate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6C8FA79F213FB73E00AB5435 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDAD46C4243AE99300E73398 /* FGCrashProtector.m in Sources */,
+				EDAD46B2243AE7B300E73398 /* FGRefreshHeader.m in Sources */,
 				ED63AC642413E8240089409C /* NSObject+Convience.m in Sources */,
 				ED63AC632413E8240089409C /* MBProgressHUD+Convience.m in Sources */,
+				EDAD46BE243AE8CC00E73398 /* FGViewControllerFactory.m in Sources */,
 				6C904990213FBB33001967D1 /* FGBaseViewController.m in Sources */,
 				6C90498C213FBB33001967D1 /* FGBaseCollectionViewCell.m in Sources */,
 				ED63AAA32413E5A70089409C /* FGNetworkManager.m in Sources */,
 				ED63AC5E2413E8100089409C /* UIControl+Expand.m in Sources */,
+				EDAD46AC243AD0C700E73398 /* FGBaseView.m in Sources */,
+				EDAD46B5243AE80D00E73398 /* FGContext.m in Sources */,
 				6C8FA7AE213FB73E00AB5435 /* ViewController.m in Sources */,
 				6C8FA7AB213FB73E00AB5435 /* AppDelegate.m in Sources */,
+				EDAD46B8243AE88100E73398 /* FGRoute.m in Sources */,
 				6C8FA7A8213FB73E00AB5435 /* main.m in Sources */,
 				6C90498D213FBB33001967D1 /* FGBaseButton.m in Sources */,
 				6C90498E213FBB33001967D1 /* FGBaseTableViewCell.m in Sources */,
+				EDAD46BF243AE8CC00E73398 /* FGRouteAddress.m in Sources */,
 				6C90498F213FBB33001967D1 /* FGBaseNavigationController.m in Sources */,
 				ED63AC672413E8370089409C /* UIView+Convience.m in Sources */,
+				EDAD46C5243AE99300E73398 /* FGLogTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +483,7 @@
 		};
 		6C8FA7BB213FB73E00AB5435 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B92398C01F2EB1CD816375C0 /* Pods-OCTemplate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -371,6 +498,7 @@
 		};
 		6C8FA7BC213FB73E00AB5435 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D45731420ECB2F55B6D790F3 /* Pods-OCTemplate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

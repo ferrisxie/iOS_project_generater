@@ -1,9 +1,9 @@
 //
 //  NSObject+Convience.m
-//  WXTeacherBoard
+//  FGeacherBoard
 //
 //  Created by Ferris on 2020/3/3.
-//  Copyright © 2020 100tal. All rights reserved.
+//  Copyright © 2020 localOrganization. All rights reserved.
 //
 
 #import "NSObject+Convience.h"

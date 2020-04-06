@@ -1,3 +1,6 @@
+templates/oc/OCTemplate.xcworkspace/
+templates/oc/OCTemplate/FGViewControllerFactory.h
+templates/oc/Podfile.lock
 templates/oc/OCTemplate.xcodeproj/project.xcworkspace/xcuserdata/
 .DS_Store
 .idea
